@@ -41,8 +41,8 @@ class App extends Component {
         <div className="container">
           <section className="section">
             <ul>
-              {this.state.veggies.map(item => (
-                <li key={item}>{item}</li>
+              {this.state.veggies.map(filtered => (
+                <li key={filtered}>{filtered}</li>
               ))}
             </ul>
           </section>
@@ -69,6 +69,21 @@ class App extends Component {
 class Veggies extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+        filtered: []
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      filtered: this.props.items
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      filtered: nextProps.items
+    });
   }
 
   render() {
