@@ -5,6 +5,7 @@ import 'bulma/bulma';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.addItem = this.addItem.bind(this);
     this.state = {
       veggies: [
         "Carrots",
@@ -13,6 +14,27 @@ class App extends Component {
       ]
     }
   }
+
+  addItem(e) {
+    e.preventDefault();
+
+    let veggies = this.state.veggies;
+    const newItem = document.getElementById("addInput");
+    const form = document.getElementById("addItemForm");
+
+    if (newItem.value != "") {
+      veggies.push(newItem.value);
+      this.setState({
+        veggies: veggies
+      });
+      newItem.classVeggies.remove("is-danger");
+      form.reset();
+    } else {
+
+      newItem.classVeggies.add("is-danger");
+    }
+  }
+
   render() {
     return (
       <div className="content">
