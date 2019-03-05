@@ -24,10 +24,25 @@ class App extends Component {
               ))}
             </ul>
           </section>
+          <hr />
+          <section className="section">
+            <form className="form" id="addItemForm">
+              <input
+                type="text"
+                className="input"
+                id="addInput"
+                placeholder="fuck yea veggies"
+              />
+              <button className="button is-info" onClick={this.addItem}>
+                rate that bitch
+              </button>
+            </form>
+          </section>
         </div>
       </div>
     )
   }
 }
+
 
 ReactDOM.render(<App />, document.getElementById('app'));
